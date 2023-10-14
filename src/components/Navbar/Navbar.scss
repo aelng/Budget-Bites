@@ -1,0 +1,14 @@
+nav {
+    display: flex;
+    flex-direction: column;
+    a {
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 500000rem;
+        transition-duration: 250ms;
+        display: block;
+        &:hover {
+            backdrop-filter: brightness(120%);
+        }
+    }
+}
