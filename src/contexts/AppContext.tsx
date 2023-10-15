@@ -4,6 +4,7 @@ import {
     ReactNode,
     Dispatch,
     SetStateAction,
+    useEffect
 } from "react";
 import { Product } from "../types/types";
 import { Coordinate } from "../types/coordinate";
@@ -18,7 +19,7 @@ type AppContextValue = {
     Geocoder: google.maps.Geocoder;
     cart: Product[];
     addToCart: (arg0: Product) => void;
-    removeFromCart: (arg0: Product) => void;
+    removeFromCart: (arg0: Product, arg1?: number) => void;
 };
 
 export const AppContext = createContext<AppContextValue | null>(null);
@@ -97,7 +98,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         },
     ]);
 
-    service
+    useEffect(() => {
+        service
         .getDistanceMatrix({
             origins: [{ lat: location[0], lng: location[1] }],
             destinations: products.map((p) => {
@@ -112,6 +114,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
             });
             setProducts(tempProducts);
         });
+    }, [])
 
     const [cart, setCart] = useState<Product[]>([]);
 
@@ -129,8 +132,19 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         addToCart: (cartItem: Product) => {
             setCart((prevCart) => [...prevCart, cartItem]);
         },
-        removeFromCart: (cartItem: Product) => {
-            setCart((prevCart) => prevCart.filter((item) => item !== cartItem));
+        removeFromCart: (cartItem: Product, max?: number) => {
+            console.log(cartItem, max || 100)
+            let current = 0
+            setCart(cart.filter((item) => {
+                console.log(item.name)
+                if (item.name === cartItem.name) {
+                    if ((max || 100) > current) {
+                        current += 1
+                        return false
+                    }
+                }
+                return true
+            }));
         },
     };
     return (

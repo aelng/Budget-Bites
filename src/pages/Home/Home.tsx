@@ -5,14 +5,14 @@ import "./Home.scss";
 
 const Home: FunctionComponent = () => {
     const { products } = useAppContext();
-    const rec = [...products].filter((_, i) => i % 2);
-    const byDistance = [...products].sort(
+    const rec = products.filter(() => Math.random() < 0.5);
+    const byDistance = products.sort(
         (a, b) =>
             (a.DistanceMatrixResponseElement?.distance?.value || 99999999) -
             (b.DistanceMatrixResponseElement?.distance?.value || 99999999)
     );
 
-    const byDuration = [...products].sort(
+    const byDuration = products.sort(
         (a, b) =>
             (a.DistanceMatrixResponseElement?.duration?.value || 99999999) -
             (b.DistanceMatrixResponseElement?.duration?.value || 99999999)

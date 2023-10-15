@@ -1,14 +1,19 @@
 import { FunctionComponent, CSSProperties } from "react";
 import { Product } from "../../types/types";
-import { IconMapPin } from "@tabler/icons-react";
+import { IconMapPin, IconShoppingCartPlus } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import "./Card.scss";
+import { useAppContext } from "../../hooks/useAppContext";
+import { ToastContainer, toast } from 'react-toast';
 
 interface CardProps {
     product: Product;
 }
 
+
+
 const Card: FunctionComponent<CardProps> = ({ product }) => {
+    const { addToCart, setProducts, products } = useAppContext()
     return (
         <div
             className="Card flex-shrink-0 rounded-[40px] bg-[#D9D9D9] w-80 h-64 overflow-clip relative"
@@ -27,6 +32,22 @@ const Card: FunctionComponent<CardProps> = ({ product }) => {
                     }}
                 >
                     {product.left} left
+                </div>
+                <div
+                    className="absolute right-4 top-4 h-8 w-8 rounded-full bg-green-400 hover:bg-green-500 transition flex items-center justify-center cursor-pointer"
+                    onClick={() => {
+                        const i = products.indexOf(product)
+                        console.log(i)
+
+                        addToCart(product);
+                        let productsCopy = [...products]
+                        productsCopy[i].left -= 1
+                        if (productsCopy[i].left <= 0) productsCopy.splice(i, 1)
+
+                        setProducts(productsCopy)
+                        toast.success(`Added ${product.name} to cart.`)
+                    }}>
+                    <IconShoppingCartPlus size={24}/>
                 </div>
             </div>
             <div className="h-1/2 flex flex-col justify-evenly p-4">
@@ -66,6 +87,10 @@ const Card: FunctionComponent<CardProps> = ({ product }) => {
                     </Link>
                 </div>
             </div>
+            <ToastContainer
+                position="bottom-right"
+
+            />
         </div>
     );
 };

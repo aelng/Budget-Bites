@@ -27,7 +27,7 @@ const Header: FunctionComponent = () => {
         Geocoder.geocode({
             location: { lat: location[0], lng: location[1] },
         }).then((res) => setCity(res.results[6].formatted_address));
-    }, [Geocoder, location]);
+    }, [Geocoder, location, setCity]);
 
     return (
         <header className="bg-[#0E694A] w-full py-5 px-10 items-center grid grid-flow-column">
