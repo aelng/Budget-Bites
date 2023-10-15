@@ -21,25 +21,25 @@ const Home: FunctionComponent = () => {
         <div className="Home page">
             <h2>Recommended for you</h2>
             <div className="card-container">
-                {rec.map((product, i) => (
+                {rec.filter((product) => product.left > 0).map((product, i) => (
                     <Card {...{ product, key: i }} />
                 ))}
             </div>
             <h2>All</h2>
             <div className="card-container">
-                {products.map((product, i) => (
+                {products.filter((product) => product.left > 0).map((product, i) => (
                     <Card {...{ product, key: i }} />
                 ))}
             </div>
             <h2>Nearest by Distance</h2>
             <div className="card-container">
-                {byDistance.map((product, i) => (
+                {byDistance.filter((product) => product.left > 0).map((product, i) => (
                     <Card {...{ product, key: i }} />
                 ))}
             </div>
             <h2>Nearest by Time</h2>
             <div className="card-container">
-                {byDuration.map((product, i) => (
+                {byDuration.filter((product) => product.left > 0).map((product, i) => (
                     <Card {...{ product, key: i }} />
                 ))}
             </div>

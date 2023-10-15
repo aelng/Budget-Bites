@@ -9,9 +9,9 @@ import Store from "./pages/Store/Store";
 import Recipe from "./pages/Recipe/Recipe";
 import { AppContextProvider } from "./contexts/AppContext";
 import MyCart from "./pages/MyCart/MyCart";
+import Success from "./pages/Success/Success";
 
 function App() {
-    console.log("app")
     return (
         <BrowserRouter>
             <AppContextProvider>
@@ -36,6 +36,7 @@ function App() {
                             ></Route>
                             <Route path="/cart" element={<MyCart />} />
                             <Route path="/recipe" element={<Recipe />} />
+                            <Route path="/success" element={<Success />} />
                         </Routes>
                     </div>
                 </div>

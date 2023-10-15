@@ -9,7 +9,7 @@ const stripePromise = loadStripe(
 );
 
 function MyCart() {
-    const { cart, addToCart, removeFromCart } = useAppContext();
+    const { cart, addToCart, removeFromCart, products, setProducts } = useAppContext();
     const handleClick = async (event: React.FormEvent<HTMLButtonElement>) => {
         event.preventDefault();
         // When the customer clicks on the button, redirect them to Checkout.
@@ -50,21 +50,28 @@ function MyCart() {
                 {cart.length !== 0 ? (
                     cartWithFrequencies.map(({ name, product, count }) => (
                     <div>
-                        <h3 className="font-bold text-2xl">{name}</h3>
                         <div className="flex">
                             <div
                                 onClick={() => {
                                     removeFromCart(product, 1)
+                                    const productsCopy = [...products]
+                                    productsCopy[productsCopy.indexOf(product)].left += 1
+                                    setProducts(productsCopy)
                                 }}
                                 className="cursor-pointer p-4"
                             >-</div>
                             <div className="py-4 px-6 text-xl">{count}</div>
                             <div
                                 onClick={() => {
+                                    if (product.left > 0)
                                     addToCart(product)
+                                    const productsCopy = [...products]
+                                    productsCopy[productsCopy.indexOf(product)].left -= 1
+                                    setProducts(productsCopy)
                                 }}
                                 className="cursor-pointer p-4"
                             >+</div>
+                        <h3 className="font-bold text-2xl">{name}</h3>
                         </div>
                         
                     </div>
