@@ -45,9 +45,14 @@ const Card: FunctionComponent<CardProps> = ({ product }) => {
                 </div>
                 <div className="absolute bottom-4 right-6 text-xs text-[#818181]">
                     <span className="mr-1">
-                        {product.DistanceMatrixResponseElement?.distance?.text}{" "}
-                        |{" "}
-                        {product.DistanceMatrixResponseElement?.duration?.text}{" "}
+                        {product.DistanceMatrixResponseElement?.status ==
+                        "ZERO_RESULTS"
+                            ? "Cannot drive"
+                            : product.DistanceMatrixResponseElement?.distance
+                                  ?.text +
+                              " | " +
+                              product.DistanceMatrixResponseElement?.duration
+                                  ?.text}
                     </span>
                     <Link
                         to={`/map/${product.location[0]}/${product.location[1]}`}

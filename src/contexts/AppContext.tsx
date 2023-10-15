@@ -13,7 +13,9 @@ type AppContextValue = {
     setProducts: Dispatch<SetStateAction<Product[]>>;
     addProduct: (arg0: Product) => void;
     location?: Coordinate;
+    setLocation?: Dispatch<SetStateAction<Coordinate>>;
     DistanceMatrixService: google.maps.DistanceMatrixService;
+    Geocoder: google.maps.Geocoder;
     cart: Product[];
     addToCart: (arg0: Product) => void;
     removeFromCart: (arg0: Product) => void;
@@ -27,6 +29,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     ]);
 
     const service = new google.maps.DistanceMatrixService();
+    const geocoder = new google.maps.Geocoder();
 
     // navigator.geolocation.getCurrentPosition(
     //     (position) => {
@@ -68,17 +71,17 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
                 "https://cdn.discordapp.com/attachments/1162120421026578522/1162984791092760666/a.png?ex=653decfd&is=652b77fd&hm=d68c49e67d5ba89e694c3b4911f57f32884057a1d80bece6c12d49d318421848&",
             pickupTime: "3pm-5pm",
             cost: "$0.99",
-            location: [43.79318572994024, -79.24004279162125],
+            location: [43.81011637266236, -79.27037412310364],
         },
         {
-            name: "LI FANG YIN",
-            image: "https://cdn.discordapp.com/attachments/1162120421026578522/1162986717838585926/aa.png?ex=653deec8&is=652b79c8&hm=08346f1ef05b5e9c730604753b2ae3cccace33ed1be49b115783f439ba449903&",
+            name: "Chicken On The Rocks",
+            image: "https://i.redd.it/kxi5axqo9uo91.jpg",
             left: 1,
-            storeName: "Gary Zhang",
+            storeName: "Lazeez",
             storeIcon:
-                "https://wallpapers.com/images/hd/big-luffy-smile-ej9gxxz5rfs2om9m.jpg",
+                "https://cdn.discordapp.com/attachments/1162120421026578522/1162991156683079681/lazeez.png?ex=653df2eb&is=652b7deb&hm=ea976f04bd06949d07e74121ba66aeba41994ee91420977134d33a382515f83d&",
             pickupTime: "3pm-5pm",
-            cost: "Free",
+            cost: "$4.99",
             location: [43.78323022514291, -79.16968970436169],
         },
         {
@@ -119,6 +122,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
             setProducts((p) => [...p, newProduct]);
         },
         location,
+        setLocation,
+        Geocoder: geocoder,
         DistanceMatrixService: service,
         cart,
         addToCart: (cartItem: Product) => {

@@ -5,12 +5,12 @@
 .page {
   padding: 2.5rem;
   width: 80vw;
-  height: 89vh;
+  height: calc(100vh - 88px);
   overflow: hidden scroll
 }
 
 .wrapper {
-  grid-template-columns: 20vw 80vw;
+  grid-template-columns: 20svw 80svw;
 }
 
 .card-container {

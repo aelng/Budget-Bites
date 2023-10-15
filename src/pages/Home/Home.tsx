@@ -8,14 +8,14 @@ const Home: FunctionComponent = () => {
     const rec = [...products].filter((_, i) => i % 2);
     const byDistance = [...products].sort(
         (a, b) =>
-            (a.DistanceMatrixResponseElement?.distance?.value || 0) -
-            (b.DistanceMatrixResponseElement?.distance?.value || 0)
+            (a.DistanceMatrixResponseElement?.distance?.value || 99999999) -
+            (b.DistanceMatrixResponseElement?.distance?.value || 99999999)
     );
 
     const byDuration = [...products].sort(
         (a, b) =>
-            (a.DistanceMatrixResponseElement?.duration?.value || 0) -
-            (b.DistanceMatrixResponseElement?.duration?.value || 0)
+            (a.DistanceMatrixResponseElement?.duration?.value || 99999999) -
+            (b.DistanceMatrixResponseElement?.duration?.value || 99999999)
     );
     return (
         <div className="Home page">
