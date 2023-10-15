@@ -9,4 +9,5 @@ export type Product = {
     pickupTime: string;
     cost: string;
     location: Coordinate;
+    DistanceMatrixResponseElement?: google.maps.DistanceMatrixResponseElement;
 };

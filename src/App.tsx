@@ -7,6 +7,7 @@ import Map from "./pages/Map/Map";
 import Search from "./pages/Search/Search";
 import Store from "./pages/Store/Store";
 import { AppContextProvider } from "./contexts/AppContext";
+import MyCart from "./pages/MyCart/MyCart";
 
 function App() {
     return (
@@ -20,7 +21,7 @@ function App() {
                             <Route path="/" element={<Home />}></Route>
                             <Route path="/map" element={<Map />}></Route>
                             <Route
-                                path="/map/:long/:lat"
+                                path="/map/:lat/:long"
                                 element={<Map />}
                             ></Route>
                             <Route
@@ -31,6 +32,7 @@ function App() {
                                 path="/store/:query"
                                 element={<Store />}
                             ></Route>
+                            <Route path="/cart" element={<MyCart />} />
                         </Routes>
                     </div>
                 </div>

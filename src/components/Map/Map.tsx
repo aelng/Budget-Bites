@@ -1,7 +1,5 @@
-import { FunctionComponent } from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import { FunctionComponent, useEffect, useRef } from "react";
 import { useMemo } from "react";
-import { useAppContext } from "../../hooks/useAppContext";
 import "./Map.scss";
 
 interface MapProps {
@@ -10,28 +8,23 @@ interface MapProps {
 }
 
 const Map: FunctionComponent<MapProps> = ({ lat, long }) => {
-    const { isLoaded } = useAppContext();
-    const center = { lat: lat, lng: long };
+    const center = useMemo(() => {
+        return { lat: lat, lng: long };
+    }, [lat, long]);
     console.log(center);
+
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!ref.current) return;
+        new window.google.maps.Map(ref.current, {
+            center,
+            zoom: 20,
+        });
+    }, [center]);
+
     return (
-        <div className="Map">
-            {!isLoaded ? (
-                <h1>Loading...</h1>
-            ) : (
-                <GoogleMap
-                    mapContainerClassName="map-container"
-                    center={center}
-                    zoom={20}
-                >
-                    <Marker
-                        position={{
-                            lat: 43.78709226329809,
-                            lng: -79.18961737715792,
-                        }}
-                    />
-                </GoogleMap>
-            )}
-        </div>
+        <div className="Map map-container" ref={ref} />
     );
 };
 

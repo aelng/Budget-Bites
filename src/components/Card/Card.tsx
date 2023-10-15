@@ -1,5 +1,7 @@
 import { FunctionComponent, CSSProperties } from "react";
 import { Product } from "../../types/types";
+import { IconMapPin } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 import "./Card.scss";
 
 interface CardProps {
@@ -12,7 +14,7 @@ const Card: FunctionComponent<CardProps> = ({ product }) => {
             className="Card flex-shrink-0 rounded-[40px] bg-[#D9D9D9] w-80 h-64 overflow-clip relative"
             style={{ "--image": `url('${product.image}')` } as CSSProperties}
         >
-            <div className="top h-1/2 flex flex-col justify-end items-start p-4">
+            <div className="top h-1/2 flex flex-col justify-end items-start p-4 bg-center">
                 <h3 className="text-white font-semibold text-2xl">
                     {product.name}
                 </h3>
@@ -41,7 +43,23 @@ const Card: FunctionComponent<CardProps> = ({ product }) => {
                     </p>
                     <p className="text-left">Cost: {product.cost}</p>
                 </div>
-                <div className="absolute bottom-4 right-4">asdlfkj</div>
+                <div className="absolute bottom-4 right-6 text-xs text-[#818181]">
+                    <span className="mr-1">
+                        {product.DistanceMatrixResponseElement?.distance?.text}{" "}
+                        |{" "}
+                        {product.DistanceMatrixResponseElement?.duration?.text}{" "}
+                    </span>
+                    <Link
+                        to={`/map/${product.location[0]}/${product.location[1]}`}
+                    >
+                        <div className="inline-block bg-[#0E694A] h-8 w-8 p-auto rounded-full relative top-2">
+                            <IconMapPin
+                                className="inline absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                                color="#CCCCCC"
+                            />
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
     );
