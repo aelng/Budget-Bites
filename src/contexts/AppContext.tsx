@@ -26,7 +26,7 @@ export const AppContext = createContext<AppContextValue | null>(null);
 
 export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     const [location, setLocation] = useState<Coordinate>([
-        43.78709226329809, -79.18961737715792,
+        43.78668240105278, -79.18963816316345,
     ]);
 
     const service = new google.maps.DistanceMatrixService();
@@ -41,6 +41,17 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     // );
 
     const [products, setProducts] = useState<Product[]>([
+        {
+            name: "Muffins",
+            image: "https://cdn.discordapp.com/attachments/1162120421026578522/1163135343869042688/image.png?ex=653e7933&is=652c0433&hm=68dd1ce6cf28d5f2f1b8e55aea5c0775867d2efed7b54beaa82fb9c2bd7e2640&",
+            left: 2,
+            storeName: "Hack the Valley",
+            storeIcon:
+                "https://cdn.discordapp.com/icons/1157000436503564430/9e7a4fcd2cdccac03ad9eb2e7dc175b6.webp?size=96",
+            pickupTime: "6pm-9pm",
+            cost: "$0.69",
+            location: [43.786736298196494, -79.18997273691392],
+        },
         {
             name: "Milk",
             image: "https://www.tampabay.com/resizer//qVyNWUKJvqdZM2nZvW9IMTqX0iM=/900x506/smart/filters:format(webP)/arc-anglerfish-arc2-prod-tbt.s3.amazonaws.com/public/HBKH7YGH6EI6TJTLIBWI6S7HAY.jpg",
@@ -64,7 +75,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
             location: [43.75961103483255, -79.29779819951865],
         },
         {
-            name: "Bannanas",
+            name: "Bananas",
             image: "https://th.bing.com/th/id/OIP.SQVdxKvswNRbvU-UwXk03gAAAA?pid=ImgDet&rs=1",
             left: 1,
             storeName: "Food Basics",
@@ -84,6 +95,46 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
             pickupTime: "3pm-5pm",
             cost: "$4.99",
             location: [43.78323022514291, -79.16968970436169],
+        }, 
+        {
+            name: "Peas",
+            image: "https://pbs.twimg.com/media/F3G4dfRbwAA1k17?format=jpg&name=small",
+            left: 3,
+            storeName: "Chick-fil-a",
+            storeIcon: "https://pbs.twimg.com/profile_images/1148729107406041088/emlH0Rv4_400x400.png",
+            pickupTime: "9am-3pm",
+            cost: "$0.67",
+            location: [29.776231188843123, -95.38097121247154]
+        },
+        {
+            name: "Burger patties",
+            image: "https://a.storyblok.com/f/171241/1500x600/4dba9cd613/burgers-stack_crispy-yellow-bg.jpeg/m/",
+            left: 4,
+            storeName: "Mr. Beast Burger",
+            storeIcon: "https://play-lh.googleusercontent.com/E-pOBgGK0ssb4D5d_ufM__FTPW4MIJghKx5kzqy3-_OAca2cC04cVAWqa71LFNiEgQ",
+            pickupTime: "11am-4pm",
+            cost: "$0.78",
+            location: [43.529540559158946, -80.248260518712]
+        },
+        {
+            name: "Pizza Dough",
+            image: "https://i.stack.imgur.com/sHZwp.jpg",
+            left: 4,
+            storeName: "Big Bite Pizza",
+            storeIcon: "https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-1/305482076_749346869835000_3141189432076105167_n.png?stp=dst-png_p200x200&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tQVJenhu8y8AX8YyLVZ&_nc_ht=scontent-yyz1-1.xx&oh=00_AfCI3lk7nvvJ83MiemFzBuhF5btYeYkdM57Fok-CjDJU1g&oe=652FFCB5",
+            pickupTime: "9am-2pm",
+            cost: "$1.03",
+            location: [43.470819418177655, -80.5933605143783]
+        },
+        {
+            name: "Fried Chicken",
+            image: "https://media-cdn.tripadvisor.com/media/photo-s/0e/d0/d0/53/overcooked-fried-chicken.jpg",
+            left: 4,
+            storeName: "Kentucky Fried Chicken",
+            storeIcon: "https://upload.wikimedia.org/wikipedia/en/thumb/5/57/KFC_logo-image.svg/1200px-KFC_logo-image.svg.png",
+            pickupTime: "10am-1pm",
+            cost: "$2.04",
+            location: [36.95984861835326, -84.09387789559345]
         },
         {
             name: "ดาร์ธ เวเดอร์กินสุนัขของฉัน",
@@ -92,8 +143,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
             storeName: "Geylang Serai Market and Food Centre",
             storeIcon:
                 "https://wallpapers.com/images/hd/big-luffy-smile-ej9gxxz5rfs2om9m.jpg",
-            pickupTime: "3pm-5pm",
-            cost: "Free",
+            pickupTime: "2pm-5:30pm",
+            cost: "$3.43",
             location: [1.3167901136442113, 103.8983060507915],
         },
     ]);

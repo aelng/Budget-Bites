@@ -14,10 +14,11 @@ const Search = () => {
         return <></>;
     }
 
-    const fuse = new Fuse(products, { keys: ["name"] });
+    const fuse = new Fuse(products, { keys: ["name", "storeName"] });
     const searchedProducts: Product[] = fuse
         .search(query)
-        .map((searched) => searched.item);
+        .map((searched) => searched.item)
+        .filter((product) => product.left > 0);
 
     return (
         <div className="page">

@@ -46,7 +46,7 @@ function MyCart() {
     return (
         <div className="page">
             <h1 className="text-[3rem] font-medium">My Cart</h1>
-            <div className="min-h-[50%] flex flex-col">
+            <div className="min-h-[50%] flex flex-col px-20">
                 {cart.length !== 0 ? (
                     cartWithFrequencies.map(({ name, product, count }) => (
                     <div>
@@ -63,11 +63,12 @@ function MyCart() {
                             <div className="py-4 px-6 text-xl">{count}</div>
                             <div
                                 onClick={() => {
-                                    if (product.left > 0)
-                                    addToCart(product)
-                                    const productsCopy = [...products]
-                                    productsCopy[productsCopy.indexOf(product)].left -= 1
-                                    setProducts(productsCopy)
+                                    if (product.left > 0) {
+                                        addToCart(product)
+                                        const productsCopy = [...products]
+                                        productsCopy[productsCopy.indexOf(product)].left -= 1
+                                        setProducts(productsCopy)
+                                    }
                                 }}
                                 className="cursor-pointer p-4"
                             >+</div>
@@ -83,12 +84,19 @@ function MyCart() {
                     </div>
                 )}
             </div>
+            { cart.length !== 0 ? <div className="border-gray-300 border-[1px] py-4 px-8 rounded-md w-48 m-auto mb-4">
+                <h2 className="font-bold text-xl">Total Price</h2>
+                <p className="font-mono text-lg">${ cart.map(p => +p.cost.slice(1)).reduce((acc, curr) => acc + curr).toFixed(2) }</p>
+            </div> : <></>}
             { cart.length ? <button
                 className="bg-green-700 px-4 py-2 rounded-full text-gray-100 hover:bg-green-600 hover:shadow transition"
                 onClick={handleClick}
             >
                 Proceed to Checkout
             </button> : <></>}
+
+            
+            
         </div>
     );
 }

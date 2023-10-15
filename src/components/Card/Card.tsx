@@ -37,12 +37,11 @@ const Card: FunctionComponent<CardProps> = ({ product }) => {
                     className="absolute right-4 top-4 h-8 w-8 rounded-full bg-green-400 hover:bg-green-500 transition flex items-center justify-center cursor-pointer"
                     onClick={() => {
                         const i = products.indexOf(product)
-                        console.log(i)
 
                         addToCart(product);
                         let productsCopy = [...products]
                         productsCopy[i].left -= 1
-                        if (productsCopy[i].left <= 0) productsCopy.splice(i, 1)
+                        // if (productsCopy[i].left <= 0) productsCopy.splice(i, 1)
 
                         setProducts(productsCopy)
                         toast.success(`Added ${product.name} to cart.`)
