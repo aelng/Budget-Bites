@@ -50,7 +50,7 @@ function MyCart() {
                 {cart.length !== 0 ? (
                     cartWithFrequencies.map(({ name, product, count }) => (
                     <div>
-                        <div className="flex">
+                        <div className="flex items-center">
                             <div
                                 onClick={() => {
                                     removeFromCart(product, 1)
