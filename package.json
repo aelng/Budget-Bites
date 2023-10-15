@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.2",
+    "@tabler/icons-react": "^2.39.0",
+    "@types/google.maps": "^3.54.3",
+    "fuse.js": "^6.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",

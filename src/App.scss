@@ -5,3 +5,28 @@
 .page {
   padding: 2.5rem;
 }
+
+.wrapper {
+  grid-template-columns: 20vw 80vw;
+}
+
+.card-container {
+  padding-bottom: 0.5rem;
+  display: flex;
+  gap: 2.5rem;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    background-color: initial;
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    &:hover {
+      background-color: rgb(75, 75, 75);
+    }
+    border-radius: 99999px;
+  }
+}
+

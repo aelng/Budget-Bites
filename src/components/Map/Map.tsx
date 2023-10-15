@@ -1,26 +1,38 @@
 import { FunctionComponent } from "react";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useMemo } from "react";
+import { useAppContext } from "../../hooks/useAppContext";
 import "./Map.scss";
 
-const Map: FunctionComponent = () => {
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    });
-    const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
+interface MapProps {
+    long: number;
+    lat: number;
+}
+
+const Map: FunctionComponent<MapProps> = ({ lat, long }) => {
+    const { isLoaded } = useAppContext();
+    const center = { lat: lat, lng: long };
+    console.log(center);
     return (
-        <div className="App">
+        <div className="Map">
             {!isLoaded ? (
                 <h1>Loading...</h1>
             ) : (
                 <GoogleMap
                     mapContainerClassName="map-container"
                     center={center}
-                    zoom={10}
+                    zoom={20}
                 >
-                    <Marker position={{ lat: 18.52043, lng: 73.856743 }} />
+                    <Marker
+                        position={{
+                            lat: 43.78709226329809,
+                            lng: -79.18961737715792,
+                        }}
+                    />
                 </GoogleMap>
             )}
         </div>
     );
 };
+
+export default Map;

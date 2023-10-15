@@ -9,7 +9,7 @@ interface CardProps {
 const Card: FunctionComponent<CardProps> = ({ product }) => {
     return (
         <div
-            className="Card rounded-[40px] bg-[#D9D9D9] w-80 h-64 overflow-clip"
+            className="Card flex-shrink-0 rounded-[40px] bg-[#D9D9D9] w-80 h-64 overflow-clip relative"
             style={{ "--image": `url('${product.image}')` } as CSSProperties}
         >
             <div className="top h-1/2 flex flex-col justify-end items-start p-4">
@@ -41,6 +41,7 @@ const Card: FunctionComponent<CardProps> = ({ product }) => {
                     </p>
                     <p className="text-left">Cost: {product.cost}</p>
                 </div>
+                <div className="absolute bottom-4 right-4">asdlfkj</div>
             </div>
         </div>
     );

@@ -1,3 +1,5 @@
+import { Coordinate } from "./coordinate";
+
 export type Product = {
     name: string;
     image: string;
@@ -6,4 +8,5 @@ export type Product = {
     storeIcon: string;
     pickupTime: string;
     cost: string;
+    location: Coordinate;
 };

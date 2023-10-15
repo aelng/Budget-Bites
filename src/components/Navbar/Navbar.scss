@@ -1,12 +1,12 @@
 nav {
     display: flex;
     flex-direction: column;
-    a {
-        padding: 0.75rem;
-        margin: 0.3rem 1rem;
+    a:not(.home-link) {
+        padding: 0.5rem 2rem;
+        margin: 0.15rem 1rem;
         border-radius: 500000rem;
         transition-duration: 250ms;
-        display: block;
+        text-align: left;
         &:hover, &.active {
             backdrop-filter: brightness(120%);
         }

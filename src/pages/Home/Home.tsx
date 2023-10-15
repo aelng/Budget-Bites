@@ -6,10 +6,12 @@ const Home: FunctionComponent = () => {
     const { products } = useAppContext();
     return (
         <div className="page">
-            <h2 className="text-[2rem]">Recommended for you</h2>
-            {products.map((product) => (
-                <Card {...{ product }} />
-            ))}
+            <h2 className="text-[2rem] mb-4">Recommended for you</h2>
+            <div className="card-container">
+                {products.map((product, i) => (
+                    <Card {...{ product, key: i }} />
+                ))}
+            </div>
         </div>
     );
 };
