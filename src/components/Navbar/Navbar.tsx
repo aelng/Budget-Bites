@@ -16,15 +16,15 @@ const Navbar: FunctionComponent = () => {
                     <h1 className="text-white text-2xl inline">Budget Bites</h1>
                 </div>
             </Link>
-            <NavLink className="flex gap-3" to="/map">
+            <NavLink className="flex gap-3 text-lg" to="/map">
                 <IconMap />
                 <span className="block">Map</span>
             </NavLink>
-            <NavLink className="flex gap-3" to="/recipe">
+            <NavLink className="flex gap-3 text-lg" to="/recipe">
                 <IconChefHat />
                 <span className="block">Recipe</span>
             </NavLink>
-            <NavLink className="flex gap-3" to="/cart">
+            <NavLink className="flex gap-3 text-lg" to="/cart">
                 <IconShoppingCart />
                 <span className="block">My Cart</span>
             </NavLink>

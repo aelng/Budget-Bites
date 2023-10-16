@@ -15,7 +15,7 @@ const Recipe = () => {
             method: 'POST',
             body: JSON.stringify({
                 prompt: `Give me a delicious recipe using the following ingredients: ${cart.map(x => x.name).join(', ')}.`,
-                max_tokens: 200,
+                max_tokens: 400,
             }),
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
@@ -39,7 +39,7 @@ const Recipe = () => {
             method: 'POST',
             body: JSON.stringify({
                 prompt: `Give me a delicious recipe using ${input}.`,
-                max_tokens: 200,
+                max_tokens: 400,
             }),
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
@@ -66,7 +66,7 @@ const Recipe = () => {
                 
                 {isGeneratingThroughInput === true ? <>
                     <textarea value={input} onChange={e => setInput(e.target.value)} rows={10} placeholder="Enter ingredients" className="p-4 rounded-md" />
-                    <button className="block bg-green-600 hover:bg-green-500 transition py-2 px-4 rounded-md text-xl text-gray-50" onClick={() => generateRecipeThroughInput(input)}>Generate Recipe</button>
+                    <button className="block bg-blue-600 hover:bg-blue-500 transition py-2 px-4 rounded-md text-xl text-gray-50" onClick={() => generateRecipeThroughInput(input)}>Generate Recipe</button>
                 </> : <>
                     <button
                         className="block bg-blue-600 hover:bg-blue-500 disabled:bg-gray-400 cursor-not-allowed transition py-2 px-4 rounded-md text-xl text-gray-50"

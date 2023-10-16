@@ -53,6 +53,17 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
             location: [43.786736298196494, -79.18997273691392],
         },
         {
+            name: "Curry Sauce",
+            image: "https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg?quality=90&resize=440,400",
+            left: 2,
+            storeName: "Silver Spoon",
+            storeIcon:
+                "https://silverspoononline.com/wp-content/uploads/2020/04/Logo.png",
+            pickupTime: "6pm-8pm",
+            cost: "$0.72",
+            location: [43.791962083132965, -79.25144371163064],
+        },
+        {
             name: "Milk",
             image: "https://www.tampabay.com/resizer//qVyNWUKJvqdZM2nZvW9IMTqX0iM=/900x506/smart/filters:format(webP)/arc-anglerfish-arc2-prod-tbt.s3.amazonaws.com/public/HBKH7YGH6EI6TJTLIBWI6S7HAY.jpg",
             left: 5,
@@ -115,6 +126,16 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
             pickupTime: "11am-4pm",
             cost: "$0.78",
             location: [43.529540559158946, -80.248260518712]
+        },
+        {
+            name: "Pasta",
+            image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2021/02/05/Baked-Feta-Pasta-4_s4x3.jpg.rend.hgtvcom.616.493.suffix/1615916524567.jpeg",
+            left: 12,
+            storeName: "Hack the North",
+            storeIcon: "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/000/152/961/datas/large.png",
+            pickupTime: "3pm-8pm",
+            cost: "$0.10",
+            location: [43.47291864733404, -80.53969245368356]
         },
         {
             name: "Pizza Dough",
